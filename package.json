@@ -16,7 +16,8 @@
     "html-entities": "^2.3.3",
     "htmldiff-js": "^1.0.5",
     "postcss": "^7.0.39",
-    "vue": "^2.6.11"
+    "vue": "^2.6.11",
+    "vuex": "^3.4.0"
   },
   "devDependencies": {
     "@vue/cli-plugin-babel": "~4.5.15",

@@ -40,8 +40,8 @@
 import Editor from "./Editor"
 import Header from "./Header"
 import HeadingMenu from "./HeadingMenu"
-// import HtmlDiff from "htmldiff-js";
-// import { decode } from "html-entities"
+import HtmlDiff from "htmldiff-js"
+import { decode } from "html-entities"
 import CommentSection from './CommentSection'
 
 export default {
