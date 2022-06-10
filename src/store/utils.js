@@ -7,6 +7,13 @@ export function handboekenRef(user_id, type_id) {
       .collection('documents')
 }
 
+export function getDocument(collection, id){
+   return firebase
+      .firestore()
+      .collection(collection)
+      .doc(id)
+}
+
 export const getDirectoryFiles = async (path) => {
    const ref = firebase
       .storage()
