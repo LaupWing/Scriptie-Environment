@@ -3,6 +3,7 @@
       <div class="w-full h-full bg-background flex">
          <side-nav/>
          <div class="flex-1 flex flex-col items-start overflow-y-hidden max-h-full">
+            <top-nav/>
             <!-- <top-nav/>
             <router-view/> -->
          </div>
@@ -12,12 +13,14 @@
 
 <script>
 import SideNav from './components/SideNav'
+import TopNav from './components/TopNav'
 import './registerGlobals'
 
 export default {
 	name: 'App',
 	components: {
-      SideNav
+      SideNav,
+      TopNav
 	}
 }
 </script>
