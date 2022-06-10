@@ -12,6 +12,7 @@
 
 <script>
 import SideNav from './components/SideNav'
+import './registerGlobals'
 
 export default {
 	name: 'App',
