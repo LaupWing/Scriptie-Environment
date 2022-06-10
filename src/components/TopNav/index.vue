@@ -21,7 +21,7 @@
             class="w-12 h-12 cursor-pointer"
          />
          <div 
-            class="absolute bottom-0 right-0 w-52 transform translate-y-full bg-main text-left overflow-hidden shadow rounded z-50"
+            class="absolute bottom-0 right-0 w-52 transform translate-y-full bg-main text-left overflow-hidden shadow rounded z-50 text-font"
             v-if="show_menu"
          >
             <li class="py-3 px-2 border-b border-border">Fons van Kesteren</li>
