@@ -1,6 +1,12 @@
 <template>
 	<div id="app" class="w-screen h-screen text-center flex flex-col items-center overflow-hidden bg-background">
-		<img alt="Vue logo" src="./assets/logo.png">
+      <div class="w-full h-full bg-background flex">
+         <side-nav/>
+         <div class="flex-1 flex flex-col items-start overflow-y-hidden max-h-full">
+            <!-- <top-nav/>
+            <router-view/> -->
+         </div>
+      </div>
 	</div>
 </template>
 
