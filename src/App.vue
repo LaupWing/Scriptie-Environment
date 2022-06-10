@@ -11,10 +11,12 @@
 </template>
 
 <script>
+import SideNav from './components/SideNav'
 
 export default {
 	name: 'App',
 	components: {
+      SideNav
 	}
 }
 </script>

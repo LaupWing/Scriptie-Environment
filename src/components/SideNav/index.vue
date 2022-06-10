@@ -18,7 +18,6 @@
             :name="link.name"
             :path="link.path"
             :minimize="minimize"
-            :pending_drafts="pending_drafts"
          />
       </ul>
       <div
@@ -41,18 +40,10 @@ export default {
    components:{
       'side-nav-link': Link
    },
-   computed:{
-      links(){
-         if(this.$store.state.permissions.isModerator){
-            return this.moderatorLinks
-         }
-         return this.customerLinks
-      }
-   },
    data(){
       return {
          show_images_info: false,
-         moderatorLinks: [
+         links: [
             {
                name: "Templates",
                icon: "templates-icon",
@@ -89,34 +80,11 @@ export default {
                },
             }
          ],
-         customerLinks: [
-            {
-               name: "Documents",
-               icon: "dossiers-icon",
-               path: {
-                  name: "Documents",
-               },
-            },
-            {
-               name: "Profile",
-               icon: "users-icon",
-               path: {
-                  name: "Profile",
-               },
-            },
-            {
-               name: "Updates",
-               icon: "updates-icon",
-               path: {
-                  name: "UpdatesCustomer",
-               },
-            }
-         ],
          minimize: false
       }
    },
    async created(){
-      this.minimize = this.$store.state.site_settings.minimize
+      // this.minimize = this.$store.state.site_settings.minimize
    }
 }
 </script>
