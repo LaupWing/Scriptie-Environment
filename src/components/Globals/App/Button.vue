@@ -33,6 +33,7 @@ export default {
          if(this.hollow){
             return 'bg-transparent text-highlight border-highlight hover:text-main hover:bg-highlight'
          }
+         return ''
       }
    }
 }
