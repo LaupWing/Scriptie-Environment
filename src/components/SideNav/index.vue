@@ -16,13 +16,12 @@
             :key="index"
             :icon="link.icon"
             :name="link.name"
-            :path="link.path"
             :minimize="minimize"
          />
       </ul>
       <div
          class="hover:bg-mainLight border-b border-border cursor-pointer flex items-center justify-center py-3"
-         @click="()=>{minimize = !minimize}"
+         @click="minimize = !minimize"
          
       >
          <icon-chevron 
@@ -42,49 +41,30 @@ export default {
    },
    data(){
       return {
-         show_images_info: false,
          links: [
             {
                name: "Templates",
-               icon: "templates-icon",
-               path: {
-                  name: "TemplatesOverview",
-               },
+               icon: "templates-icon"
             },
             {
                name: "Users",
-               icon: "users-icon",
-               path: {
-                  name: "UsersOverview",
-               },
+               icon: "users-icon"
             },
             {
                name: "Defaults",
-               icon: "defaults-icon",
-               path: {
-                  name: "DefaultsOverview",
-               },
+               icon: "defaults-icon"
             },
             {
                name: "Dossiers",
-               icon: "dossiers-icon",
-               path: {
-                  name: "DossiersOverview",
-               },
+               icon: "dossiers-icon"
             },
             {
                name: "Updates",
-               icon: "updates-icon",
-               path: {
-                  name: "UpdatesModeratorUsers",
-               },
+               icon: "updates-icon"
             }
          ],
          minimize: false
       }
-   },
-   async created(){
-      // this.minimize = this.$store.state.site_settings.minimize
    }
 }
 </script>

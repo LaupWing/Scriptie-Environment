@@ -1,28 +1,22 @@
 <template>
-   <router-link 
-      :to="path"
-      active-class="text-font"
+   <li
+      class="py-3 px-5 font-bold tracking-widest flex select-none items-center uppercase relative text-pop hover:bg-mainLight"
+      :class="minimize ? 'justify-center' : '' "
+      :style="{ fontSize: '10px'}"
    >
-      <li
-         class="py-3 px-5 font-bold tracking-widest flex select-none items-center uppercase relative text-pop hover:bg-mainLight"
-         :class="minimize ? 'justify-center' : '' "
-         :style="{ fontSize: '10px'}"
+      <component 
+         v-bind:is="icon"
+         :class="activeRoute ? 'text-highlight' : '' "
+      />
+      <p 
+         class="overflow-hidden duration-500"
+         :class="
+            `${minimize ? 'm-0 max-w-0' : 'max-w-lg ml-4'} ${activeRoute ? 'text-font' : ''}`
+         "
       >
-         <component 
-            v-bind:is="icon"
-            :class="activeRoute ? 'text-highlight' : '' "
-         />
-         <p 
-            class="overflow-hidden duration-500"
-            :class="
-               `${minimize ? 'm-0 max-w-0' : 'max-w-lg ml-4'} ${activeRoute ? 'text-font' : ''}`
-            "
-         >
-            {{ name }}
-         </p>
-         <unread v-if="path.name.includes('Update')" :path="path"/>
-      </li>
-   </router-link>
+         {{ name }}
+      </p>
+   </li>
 </template>
 <script>
 import TemplateIcon from "./Icons/Template.vue"
@@ -45,10 +39,6 @@ export default {
       "chats-icon": ChatsIcon,
    },
    props:{
-      path:{
-         type: Object,
-         required: true
-      },
       icon:{
          type: String,
          required: true
@@ -68,11 +58,7 @@ export default {
    },
    computed:{
       activeRoute(){
-         const path = this.$route.path
-         if(path.includes('handboek')){
-            return this.name.toLowerCase() === 'users'
-         }
-         return path.includes(this.name.slice(0, this.name.length -2).toLowerCase())
+         return this.name === 'Users'
       }
    }
 }
