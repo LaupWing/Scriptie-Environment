@@ -14,10 +14,10 @@
          }"
       >
          <comments
-            :comments="comparisonDocument.comments"
+            :comments="handboek_draft.comments"
          />
          <comment-form
-            :comparisonDocument="comparisonDocument"
+            :handboek_draft="handboek_draft"
          />
       </div>
    </section>
@@ -34,7 +34,7 @@ export default {
       CommentForm
    },
    props:{
-      comparisonDocument:{
+      handboek_draft:{
          type: Object,
          required: true
       }

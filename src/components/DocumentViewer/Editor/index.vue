@@ -73,11 +73,16 @@ export default {
          })
       },
       setTemplates(){
+         const iframe = document.querySelector("iframe")
          const body = document.querySelector("iframe")
             .contentWindow
             .document
             .body
-         console.log(Array.from(body.querySelectorAll('article')).map(x=>x.dataset.id))
+
+         this.$emit('set-template-items',{
+            iframe,
+            templates:Array.from(body.querySelectorAll('article')).map(x=>x.dataset.id) 
+         })
       },
       updateContent(obj) {
          const newContent = obj.level.content

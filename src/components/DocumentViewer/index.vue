@@ -16,6 +16,7 @@
                <editor
                   :content="content"
                   @set-menu-headings="editor_items = $event"
+                  @set-template-items="template_items = $event"
                />
             </div>
          </main>
@@ -28,7 +29,9 @@
       </div>
       <comment-section
          v-if="loaded"
-         :comparisonDocument="handboek_draft"
+         :template_items="template_items"
+         :templates="templates"
+         :handboek_draft="handboek_draft"
       />
    </div>
 </template>
@@ -61,11 +64,6 @@ export default {
       //    type: Boolean,
       // },
    },
-   watch: {
-      "document.current_version"() {
-         this.setCurrentContent();
-      },
-   },
    computed: {
       content() {
          const findContent = this.handboek_live.content_versions.find((x) => {
@@ -89,36 +87,21 @@ export default {
    },
    data() {
       return {
-         current_content: null,
-         sections: [],
          templates: [],
-         defaults: [],
          loaded: false,
          editor_items: null,
-         comment: '',
+         template_items: null,
          handboek_draft: null,
          handboek_live: null
       };
    },
    methods: {
-      setCurrentContent() {
-         this.current_content = this.document.content_versions.find((x) => {
-            const { mayor, sub, minor } = this.document.current_version
-            return x.mayor === mayor && x.minor === minor && sub === x.sub
-         }).content
-         if (window.tinyMCE && window.tinyMCE.activeEditor) {
-            window.tinyMCE.activeEditor.setContent(this.current_content)
-         }
-      },
       async fetchDocs(){
          this.loaded = false
          this.handboek_draft = await this.$store.dispatch('singleDraft')
-         console.log(this.handboek_draft)
          this.handboek_live = await this.$store.dispatch('single')
-         console.log(this.handboek_live)
+         this.templates = await this.$store.dispatch('templates')
          this.loaded = true
-         const templates = await this.$store.dispatch('templates')
-         console.log(templates)
       }
    },
    async created() {
@@ -133,7 +116,6 @@ export default {
       // setTimeout(()=>{
       //    this.$store.dispatch('updates/get_unread')
       // }, 1000)
-      // this.setCurrentContent()
       // this.loaded = true
    },
 };

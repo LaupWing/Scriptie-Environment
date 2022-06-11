@@ -25,7 +25,7 @@
 export default {
    name: 'CommentForm',
    props:{
-      comparisonDocument:{
+      handboek_draft:{
          type: Object,
          required: true
       }
