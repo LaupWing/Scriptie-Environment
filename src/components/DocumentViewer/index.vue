@@ -16,10 +16,10 @@
                   v-if="editor_items"
                   :editor_items="editor_items"
                /> -->
-               <!-- <editor
+               <editor
                   :content="content"
                   @set-menu-headings="editor_items = $event"
-               /> -->
+               />
             </div>
          </main>
       </div>
@@ -37,7 +37,7 @@
 </template>
 
 <script>
-// import Editor from "./Editor"
+import Editor from "./Editor"
 import Header from "./Header"
 // import HeadingMenu from "./HeadingMenu"
 import HtmlDiff from "htmldiff-js"
@@ -47,7 +47,7 @@ import { decode } from "html-entities"
 export default {
    name: "DocumentEditor",
    components: {
-      // Editor,
+      Editor,
       "app-header": Header,
       // HeadingMenu,
       // CommentSection
@@ -71,37 +71,27 @@ export default {
    },
    computed: {
       content() {
-         if(!this.comparisonDocument){
-            const findContent = this.document.content_versions.find((x) => {
-               const { mayor, sub, minor } = this.document.current_version
-               return x.mayor === mayor && x.minor === minor && sub === x.sub
-            })
-            return findContent.content
-         }else{
-            const findContent = this.document.content_versions.find((x) => {
-               const { mayor, sub, minor } = this.document.current_version
-               return x.mayor === mayor && x.minor === minor && sub === x.sub
-            })
-            const findComparinson = this.comparisonDocument.content_versions.find((x) => {
-               const { mayor, sub, minor } = this.document.current_version
-               return x.mayor === mayor && x.minor === minor && sub === x.sub
-            })
-            const container_old = document.createElement('main')
-            const container_new = document.createElement('main')
-            container_old.innerHTML = findContent.content 
-            container_new.innerHTML = findComparinson.content 
+         const findContent = this.handboek_live.content_versions.find((x) => {
+            const { mayor, sub, minor } = this.handboek_live.current_version
+            return x.mayor === mayor && x.minor === minor && sub === x.sub
+         })
+         const findComparinson = this.handboek_draft.content_versions.find((x) => {
+            const { mayor, sub, minor } = this.handboek_live.current_version
+            return x.mayor === mayor && x.minor === minor && sub === x.sub
+         })
+         const container_old = document.createElement('main')
+         const container_new = document.createElement('main')
+         container_old.innerHTML = findContent.content 
+         container_new.innerHTML = findComparinson.content 
 
-            return HtmlDiff.execute(
-               decode(container_old.innerHTML),
-               decode(container_new.innerHTML)
-            )
-
-         }
+         return HtmlDiff.execute(
+            decode(container_old.innerHTML),
+            decode(container_new.innerHTML)
+         )
       },
    },
    data() {
       return {
-         // document: JSON.parse(JSON.stringify(this.currentDocument)),
          current_content: null,
          sections: [],
          templates: [],
@@ -206,5 +196,9 @@ export default {
 * >>> .tox.tox-tinymce .tox-edit-area {
    flex: initial;
    width: 100%;
+}
+
+* > .tox.tox-tinymce{
+   border: none;
 }
 </style>

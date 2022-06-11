@@ -27,6 +27,20 @@ export default {
 </script>
 
 <style>
+:root {
+	--font-color: #2c3e50;
+	--main-color: #ffff;
+	--light-main-color: #fafafa;
+	--dark-main-color: #dadce0;
+	--pop-color: #b1b1b1;
+	--background-color: #ebf1f6;
+	--background-color2: #f8f9fa;
+	--border-color: #ced2d9;
+	--highlight-color: #2EA3F2;
+	--highlight-color-darker: #778da3;
+	--warning-color: #ff4f59;
+	--accept-color: #7cf382;
+}
 /* width */
 ::-webkit-scrollbar {
 	width: 8px;
@@ -48,5 +62,16 @@ export default {
 /* Handle on hover */
 ::-webkit-scrollbar-thumb:hover {
 	background: rgb(180, 180, 180);
+}
+
+* > .tox.tox-tinymce{
+   border: none;
+}
+* >>> .tox.tox-tinymce .tox-toolbar__primary {
+   background: var(--main-color);
+   border-bottom: 1px solid var(--border-color);
+}
+* >>> .tox .tox-toolbar__group:not(:last-of-type) {
+   border-color: var(--border-color);
 }
 </style>

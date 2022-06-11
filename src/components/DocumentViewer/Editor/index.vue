@@ -1,6 +1,5 @@
 <template>
-   <editor  
-      v-if="loaded"
+   <editor
       :initial-value="content"
       :disabled="false"
       @onInit="init"
@@ -82,11 +81,11 @@ export default {
       import("./ruler")
    },
    async created(){
-      if(this.$store.state.permissions.isModerator){
-         const _links = await this.$store.dispatch('templates/links') 
-         this.settings.link_list = _links
-      }
-      this.loaded = true
+      // if(this.$store.state.permissions.isModerator){
+      //    const _links = await this.$store.dispatch('templates/links') 
+      //    this.settings.link_list = _links
+      // }
+      // this.loaded = true
    }
 };
 </script>
