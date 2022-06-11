@@ -5,6 +5,7 @@ export default {
    resize: false,
    branding: false,
    menubar: false,
+   plugins: "noneditable",
    height: "100px",
    statusbar: false,
    toolbar: false,

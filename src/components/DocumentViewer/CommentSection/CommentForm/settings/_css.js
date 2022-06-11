@@ -5,4 +5,7 @@ export default `
    font-weight: normal;
    src: local('Calibri Light'), url('assets/fonts/calibril.woff') format('woff');
 }
+span{
+   text-decoration: underline;
+}
 `

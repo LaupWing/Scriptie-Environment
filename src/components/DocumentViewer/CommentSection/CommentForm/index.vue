@@ -60,6 +60,7 @@ export default {
       return{
          comment: '',
          showed_used_templates: false,
+         hashtag_place: null,
          settings
       }
    },
@@ -68,33 +69,35 @@ export default {
          return this.templates
             .filter(x=>this.template_items.templates.includes(x.id))
             .filter(x=>x.name.includes(this.searching))
+      },
+      splitted(){
+         const container = document.createElement('div')
+         container.innerHTML = this.comment
+         const splitted = container.querySelector('p').innerHTML.split('')
+         return splitted
       }
    },
    methods:{
       checkHashtags(){
-         const container = document.createElement('div')
-         container.innerHTML = this.comment
-         const splitted = container.querySelector('p').textContent.split('')
-         console.log(splitted)
+         const splitted = this.splitted
          const hashtags = splitted.map(x=> x === '#' ? '#' : null)
          if(hashtags.length){
             hashtags.forEach((x,i)=>{
                if(x){
                   if(!splitted[i+1] || splitted[i+1].trim() === ''){
                      this.showed_used_templates = true
+                     this.hashtag_place = i
                   }
                }
-               
             })
          }
       },
       setLink(e){
-         const splitted = this.comment.split('') 
-         splitted[this.place_to_insert] = `#<strong>${e.shortcode} ${e.name}</strong>`
-         this.comment = splitted.join('')
-         this.target.innerHtml = splitted.join('')
-         this.target.innerHtml = ''
+         const splitted = this.splitted
+         splitted[this.hashtag_place] = `<span class="mceNonEditable" data-id="${e.id}">#${e.shortcode} ${e.name}</span>`
+         this.comment = `<p>${splitted.join('')}</p>`
          this.showed_used_templates = false
+         this.hashtag_place = null
       },
       addComment(){
          console.log(this.comment)
