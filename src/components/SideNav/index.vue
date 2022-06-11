@@ -39,9 +39,14 @@ export default {
    components:{
       'side-nav-link': Link
    },
+   computed:{
+      links(){
+         return this.$store.state.isModerator ? this.moderatorLinks : this.customerLinks
+      }
+   },
    data(){
       return {
-         links: [
+         moderatorLinks: [
             {
                name: "Templates",
                icon: "templates-icon"
@@ -62,6 +67,20 @@ export default {
                name: "Updates",
                icon: "updates-icon"
             }
+         ],
+         customerLinks: [
+            {
+               name: "Documents",
+               icon: "dossiers-icon"
+            },
+            {
+               name: "Profile",
+               icon: "users-icon"
+            },
+            {
+               name: "Updates",
+               icon: "updates-icon"
+            },
          ],
          minimize: false
       }

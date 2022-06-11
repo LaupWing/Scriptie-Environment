@@ -58,7 +58,7 @@ export default {
    },
    computed:{
       activeRoute(){
-         return this.name === 'Users'
+         return this.name === 'Users' || this.name === 'Documents'
       }
    }
 }
