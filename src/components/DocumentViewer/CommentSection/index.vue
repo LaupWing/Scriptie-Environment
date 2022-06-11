@@ -19,10 +19,6 @@
          <comment-form
             :comparisonDocument="comparisonDocument"
          />
-         <!-- <actions 
-            :comparisonDocument="comparisonDocument"
-            v-on="$listeners"
-         /> -->
       </div>
    </section>
 </template>
@@ -30,14 +26,12 @@
 <script>
 import Comments from './Comments'
 import CommentForm from './CommentForm'
-import Actions from './Actions'
 
 export default {
    name: 'CommentSection',
    components:{
       Comments,
-      CommentForm,
-      Actions
+      CommentForm
    },
    props:{
       comparisonDocument:{

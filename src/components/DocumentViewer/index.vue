@@ -12,10 +12,10 @@
                @close="$emit('close')"
             />
             <div class="flex-1 flex relative">
-               <!-- <heading-menu
+               <heading-menu
                   v-if="editor_items"
                   :editor_items="editor_items"
-               /> -->
+               />
                <editor
                   :content="content"
                   @set-menu-headings="editor_items = $event"
@@ -29,28 +29,27 @@
       >
          <app-loading class="w-20"/>
       </div>
-      <!-- <comment-section
-         :comparisonDocument="comparisonDocument"
-         v-on="$listeners"
-      /> -->
+      <comment-section
+         :comparisonDocument="handboek_draft"
+      />
    </div>
 </template>
 
 <script>
 import Editor from "./Editor"
 import Header from "./Header"
-// import HeadingMenu from "./HeadingMenu"
+import HeadingMenu from "./HeadingMenu"
 import HtmlDiff from "htmldiff-js"
 import { decode } from "html-entities"
-// import CommentSection from './CommentSection'
+import CommentSection from './CommentSection'
 
 export default {
    name: "DocumentEditor",
    components: {
       Editor,
       "app-header": Header,
-      // HeadingMenu,
-      // CommentSection
+      HeadingMenu,
+      CommentSection
    },
    props: {
       // currentDocument: {
