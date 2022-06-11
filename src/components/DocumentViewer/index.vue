@@ -117,6 +117,8 @@ export default {
          this.handboek_live = await this.$store.dispatch('single')
          console.log(this.handboek_live)
          this.loaded = true
+         const templates = await this.$store.dispatch('templates')
+         console.log(templates)
       }
    },
    async created() {

@@ -7,6 +7,12 @@ export function handboekenRef(user_id, type_id) {
       .collection('documents')
 }
 
+export function getCollection(collection) {
+   return firebase
+     .firestore()
+     .collection(collection)
+}
+
 export function getDocument(collection, id){
    return firebase
       .firestore()

@@ -1,6 +1,6 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
-import { combineVersionsWithStorage, handboekenRef } from './utils'
+import { combineVersionsWithStorage, handboekenRef, getCollection } from './utils'
 
 Vue.use(Vuex)
 
@@ -60,6 +60,20 @@ export default new Vuex.Store({
                content_versions
             }
          }catch(e){
+            throw new Error(e.message)
+         }
+      },
+      async templates(){
+         try {
+            const snapshot = await getCollection('templates').get()
+   
+            return snapshot.docs.map(doc => (
+               {
+                  ...doc.data(),
+                  id: doc.id
+               }
+            ))
+         } catch (e) {
             throw new Error(e.message)
          }
       }
