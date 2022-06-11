@@ -4,14 +4,23 @@
          v-if="showed_used_templates"
          :templates="templates"
          :template_items="template_items"
+         @set-link="setLink"
          @close="showed_used_templates = false"
       />
-      <div 
+      <!-- <div 
          class="w-full border bg-gray-100 border-border resize-none rounded focus:outline-none focus:ring-2 focus:ring-highlight p-2 h-20"
          contenteditable="true"
          @input="setContent"
       >
-         
+      </div> -->
+      <div class="w-full border border-border resize-none rounded overflow-hidden">
+         <editor
+            :init="settings"
+            apiKey="xn239ptealgyuo6l4ot46xmqbchajcpljt111a6r5ljnw51z"
+            v-model="comment"
+            @input="checkHashtags"
+         >
+         </editor>
       </div>
       <app-button 
          class="mt-auto flex-shrink-0 ml-2"
@@ -23,12 +32,15 @@
 </template>
 
 <script>
+import Editor from "@tinymce/tinymce-vue"
 import UsedTemplates from './UsedTemplates'
+import settings from './settings'
 
 export default {
    name: 'CommentForm',
    components:{
-      UsedTemplates
+      UsedTemplates,
+      Editor
    },
    props:{
       handboek_draft:{
@@ -48,7 +60,7 @@ export default {
       return{
          comment: '',
          showed_used_templates: false,
-         place_to_insert: null
+         settings
       }
    },
    computed:{
@@ -59,23 +71,30 @@ export default {
       }
    },
    methods:{
-      setContent(e){
-         const splitted = e.target.innerText.split('') 
+      checkHashtags(){
+         const container = document.createElement('div')
+         container.innerHTML = this.comment
+         const splitted = container.querySelector('p').textContent.split('')
+         console.log(splitted)
          const hashtags = splitted.map(x=> x === '#' ? '#' : null)
          if(hashtags.length){
             hashtags.forEach((x,i)=>{
                if(x){
                   if(!splitted[i+1] || splitted[i+1].trim() === ''){
                      this.showed_used_templates = true
-                     e.target.blur()
-                     this.place_to_insert = i
-                  }else{
-                     this.place_to_insert = null
                   }
                }
                
             })
          }
+      },
+      setLink(e){
+         const splitted = this.comment.split('') 
+         splitted[this.place_to_insert] = `#<strong>${e.shortcode} ${e.name}</strong>`
+         this.comment = splitted.join('')
+         this.target.innerHtml = splitted.join('')
+         this.target.innerHtml = ''
+         this.showed_used_templates = false
       },
       addComment(){
          console.log(this.comment)

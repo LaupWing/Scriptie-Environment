@@ -32,6 +32,7 @@
                   v-for="template in used_templates"
                   class="p-1 text-sm border-b border-border hover:bg-highlight hover:text-main cursor-pointer duration-200"
                   :key="template.id"
+                  @click="$emit('set-link', template)"
                >
                   <span class="font-semibold">{{template.shortcode}}</span>
                   {{template.name}}
