@@ -41,8 +41,8 @@ export default new Vuex.Store({
             throw new Error(e.message)
          }
       },
-      async singleDraft(rootState){
-         console.log(rootState)
+      async singleDraft({rootState}){
+         const {user_id, type_id, handboek_id} = rootState.document
          try{
             const snapshot = await handboekenRef(user_id, type_id)
                .doc(handboek_id)
@@ -50,12 +50,11 @@ export default new Vuex.Store({
       
             const handboek = snapshot.data()
             let content_versions = handboek.content_versions
-            if(content){
-               content_versions = await combineVersionsWithStorage(
-                  `handboeken_draft/${user_id}/${type_id}/${handboek_id}`,
-                  handboek.content_versions
-               )
-            }
+            content_versions = await combineVersionsWithStorage(
+               `handboeken_draft/${user_id}/${type_id}/${handboek_id}`,
+               handboek.content_versions
+            )
+            
             return {
                ...handboek,
                content_versions

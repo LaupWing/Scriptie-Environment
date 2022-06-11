@@ -37,20 +37,20 @@
 </template>
 
 <script>
-import Editor from "./Editor"
-import Header from "./Header"
-import HeadingMenu from "./HeadingMenu"
+// import Editor from "./Editor"
+// import Header from "./Header"
+// import HeadingMenu from "./HeadingMenu"
 import HtmlDiff from "htmldiff-js"
 import { decode } from "html-entities"
-import CommentSection from './CommentSection'
+// import CommentSection from './CommentSection'
 
 export default {
    name: "DocumentEditor",
    components: {
-      Editor,
-      "app-header": Header,
-      HeadingMenu,
-      CommentSection
+      // Editor,
+      // "app-header": Header,
+      // HeadingMenu,
+      // CommentSection
    },
    props: {
       // currentDocument: {
@@ -65,7 +65,7 @@ export default {
       // },
    },
    watch: {
-      "document.current_version"(x) {
+      "document.current_version"() {
          this.setCurrentContent();
       },
    },

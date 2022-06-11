@@ -12,6 +12,7 @@
 
 <script>
 import SideNav from './components/SideNav'
+import DocumentViewer from './components/DocumentViewer'
 import TopNav from './components/TopNav'
 import './registerGlobals'
 
@@ -19,6 +20,7 @@ export default {
 	name: 'App',
 	components: {
       SideNav,
+      DocumentViewer,
       TopNav
 	}
 }
