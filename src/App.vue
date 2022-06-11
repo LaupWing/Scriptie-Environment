@@ -4,6 +4,7 @@
          <side-nav/>
          <div class="flex-1 flex flex-col items-start overflow-y-hidden max-h-full">
             <top-nav/>
+            <document-viewer/>
          </div>
       </div>
 	</div>

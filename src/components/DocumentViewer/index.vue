@@ -1,14 +1,14 @@
 <template>
    <div class="flex w-full flex-1 border-t border-border origin-top-left duration-500 min-h-0 relative flex-col">
-      <div 
+      <!-- <div 
          class="flex-1 flex"
          v-if="loaded"
       >
          <main class="flex-1 flex flex-col">
             <app-header
-               :title.sync="document.title"
-               :versions="document.content_versions"
-               :current_version.sync="document.current_version"
+               :title.sync="handboek_draft.title"
+               :versions="handboek_draft.content_versions"
+               :current_version.sync="handboek_draft.current_version"
                @close="$emit('close')"
             />
             <div class="flex-1 flex relative">
@@ -32,7 +32,7 @@
       <comment-section
          :comparisonDocument="comparisonDocument"
          v-on="$listeners"
-      />
+      /> -->
    </div>
 </template>
 
@@ -53,16 +53,16 @@ export default {
       CommentSection
    },
    props: {
-      currentDocument: {
-         type: Object,
-         required: true,
-      },
-      comparisonDocument: {
-         type: Object
-      },
-      saving: {
-         type: Boolean,
-      },
+      // currentDocument: {
+      //    type: Object,
+      //    required: true,
+      // },
+      // comparisonDocument: {
+      //    type: Object
+      // },
+      // saving: {
+      //    type: Boolean,
+      // },
    },
    watch: {
       "document.current_version"(x) {
@@ -108,7 +108,9 @@ export default {
          defaults: [],
          loaded: false,
          editor_items: null,
-         comment: ''
+         comment: '',
+         handboek_draft: null,
+         handboek_live: null
       };
    },
    methods: {
