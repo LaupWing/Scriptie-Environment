@@ -6,10 +6,7 @@
       >
          <main class="flex-1 flex flex-col">
             <app-header
-               :title.sync="handboek_draft.title"
-               :versions="handboek_draft.content_versions"
-               :current_version.sync="handboek_draft.current_version"
-               @close="$emit('close')"
+               :title="handboek_draft.title"
             />
             <div class="flex-1 flex relative">
                <heading-menu

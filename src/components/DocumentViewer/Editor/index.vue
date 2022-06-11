@@ -54,6 +54,7 @@ export default {
             }
          })
          this.updateMenuHeadings()
+         this.setTemplates()
       },
       updateMenuHeadings(){
          const iframe = document.querySelector("iframe")
@@ -71,6 +72,13 @@ export default {
             )
          })
       },
+      setTemplates(){
+         const body = document.querySelector("iframe")
+            .contentWindow
+            .document
+            .body
+         console.log(Array.from(body.querySelectorAll('article')).map(x=>x.dataset.id))
+      },
       updateContent(obj) {
          const newContent = obj.level.content
          this.$emit("update:content", newContent)
@@ -79,13 +87,6 @@ export default {
    },
    mounted() {
       import("./ruler")
-   },
-   async created(){
-      // if(this.$store.state.permissions.isModerator){
-      //    const _links = await this.$store.dispatch('templates/links') 
-      //    this.settings.link_list = _links
-      // }
-      // this.loaded = true
    }
 };
 </script>

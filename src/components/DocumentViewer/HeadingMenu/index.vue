@@ -47,6 +47,9 @@ export default {
       scrollTo(heading){
          this.editor_items.iframe.contentWindow.scrollTo(0, heading.offsetTop - 10)
       }
+   },
+   created(){
+      console.log(this.editor_items)
    }
 }
 </script>
