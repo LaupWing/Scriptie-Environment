@@ -121,20 +121,30 @@ export default {
             window.tinyMCE.activeEditor.setContent(this.current_content)
          }
       },
+      async fetchDocs(){
+         this.loaded = false
+         this.handboek_draft = await this.$store.dispatch('handboeken/singleDraft', this.$route.query)
+         this.handboek_live = await this.$store.dispatch('handboeken/single', {
+            ...this.$route.query,
+            draft: false
+         })
+         this.loaded = true
+      }
    },
    async created() {
-      await this.$store.dispatch('handboeken/updateDraft', {
-         connection: this.$route.query,
-         updates:{
-            comments:this.comparisonDocument.comments.map(x=>x.id !== this.$store.state.user.user.id ? {...x, seen: true} : x),
+      this.fetchDocs()
+      // await this.$store.dispatch('handboeken/updateDraft', {
+      //    connection: this.$route.query,
+      //    updates:{
+      //       comments:this.comparisonDocument.comments.map(x=>x.id !== this.$store.state.user.user.id ? {...x, seen: true} : x),
             
-         }
-      })
-      setTimeout(()=>{
-         this.$store.dispatch('updates/get_unread')
-      }, 1000)
-      this.setCurrentContent()
-      this.loaded = true
+      //    }
+      // })
+      // setTimeout(()=>{
+      //    this.$store.dispatch('updates/get_unread')
+      // }, 1000)
+      // this.setCurrentContent()
+      // this.loaded = true
    },
 };
 </script>

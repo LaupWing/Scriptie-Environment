@@ -4,8 +4,6 @@
          <side-nav/>
          <div class="flex-1 flex flex-col items-start overflow-y-hidden max-h-full">
             <top-nav/>
-            <!-- <top-nav/>
-            <router-view/> -->
          </div>
       </div>
 	</div>

@@ -6,7 +6,12 @@ Vue.use(Vuex)
 
 export default new Vuex.Store({
    state: {
-      count: 0
+      count: 0,
+      document: {
+         handboek_id: "4UBna1XLOuHvdAYFDy5M",
+         type_id: "8K5TcBd1x3QXADLO3Ktb",
+         user_id: "6oPbn65HvdaplGGftaSMWvccBgq2"
+      }
    },
    mutations: {
       increment(state) {
@@ -36,7 +41,8 @@ export default new Vuex.Store({
             throw new Error(e.message)
          }
       },
-      async singleDraft(_, {user_id, type_id, handboek_id, content=true}){
+      async singleDraft(rootState){
+         console.log(rootState)
          try{
             const snapshot = await handboekenRef(user_id, type_id)
                .doc(handboek_id)
