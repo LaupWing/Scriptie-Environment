@@ -101,7 +101,7 @@ export default {
    },
    data() {
       return {
-         document: JSON.parse(JSON.stringify(this.currentDocument)),
+         // document: JSON.parse(JSON.stringify(this.currentDocument)),
          current_content: null,
          sections: [],
          templates: [],
@@ -125,12 +125,13 @@ export default {
       },
       async fetchDocs(){
          this.loaded = false
-         this.handboek_draft = await this.$store.dispatch('handboeken/singleDraft', this.$route.query)
-         this.handboek_live = await this.$store.dispatch('handboeken/single', {
-            ...this.$route.query,
-            draft: false
-         })
-         this.loaded = true
+         this.handboek_draft = await this.$store.dispatch('singleDraft')
+         console.log(this.handboek_draft)
+         // this.handboek_live = await this.$store.dispatch('handboeken/single', {
+         //    ...this.$route.query,
+         //    draft: false
+         // })
+         // this.loaded = true
       }
    },
    async created() {

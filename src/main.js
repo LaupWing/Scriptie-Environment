@@ -1,5 +1,6 @@
 import Vue from 'vue'
 import App from './App.vue'
+import './firebase/init'
 import './index.css'
 import 'default-passive-events'
 import store from './store'

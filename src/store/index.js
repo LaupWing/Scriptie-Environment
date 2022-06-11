@@ -43,6 +43,7 @@ export default new Vuex.Store({
       },
       async singleDraft({rootState}){
          const {user_id, type_id, handboek_id} = rootState.document
+         console.log(user_id)
          try{
             const snapshot = await handboekenRef(user_id, type_id)
                .doc(handboek_id)
