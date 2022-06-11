@@ -1,8 +1,22 @@
 <template>
 	<div id="app" class="w-screen h-screen text-center flex flex-col items-center overflow-hidden bg-background">
       <div class="border-b border-border w-full flex px-2 py-1 items-center">
-         <button :style="{fontSize: '10px'}" class="font-bold uppercase border-2 w-24 rounded-full border-yellow-500 text-white bg-yellow-500 mr-2">moderator</button>
-         <button :style="{fontSize: '10px'}" class="font-bold uppercase border-2 w-24 rounded-full border-blue-500 text-blue-500">customer</button>
+         <button 
+            :style="{fontSize: '10px'}" 
+            class="font-bold uppercase border-2 w-24 rounded-full border-yellow-500 mr-2"
+            :class="$store.state.isModerator ? 'text-white bg-yellow-500' : 'text-yellow-500'"
+            @click="$store.commit('setModerator', true)"
+         >
+            moderator
+         </button>
+         <button 
+            :style="{fontSize: '10px'}" 
+            class="font-bold uppercase border-2 w-24 rounded-full border-blue-500"
+            :class="!$store.state.isModerator ? 'text-white bg-blue-500' : 'text-blue-500'"
+            @click="$store.commit('setModerator', false)"
+         >
+            customer
+         </button>
       </div>
       <div class="w-full h-full bg-background flex">
          <side-nav/>
