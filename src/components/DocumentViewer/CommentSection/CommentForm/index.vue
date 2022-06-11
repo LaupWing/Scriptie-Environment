@@ -4,6 +4,7 @@
          v-if="showed_used_templates"
          :templates="templates"
          :template_items="template_items"
+         @close="showed_used_templates = false"
       />
       <div 
          class="w-full border bg-gray-100 border-border resize-none rounded focus:outline-none focus:ring-2 focus:ring-highlight p-2 h-20"
@@ -46,7 +47,8 @@ export default {
    data(){
       return{
          comment: '',
-         showed_used_templates: false
+         showed_used_templates: false,
+         place_to_insert: null
       }
    },
    computed:{
@@ -63,9 +65,12 @@ export default {
          if(hashtags.length){
             hashtags.forEach((x,i)=>{
                if(x){
-                  if(!hashtags[i+1]){
+                  if(!splitted[i+1] || splitted[i+1].trim() === ''){
                      this.showed_used_templates = true
                      e.target.blur()
+                     this.place_to_insert = i
+                  }else{
+                     this.place_to_insert = null
                   }
                }
                

@@ -7,7 +7,10 @@
                   <h2 class="uppercase font-bold text-font">
                      Gebruikte templates
                   </h2>
-                  <icon-close class="w-6"/>
+                  <icon-close 
+                     class="w-6 cursor-pointer hover:text-highlight"
+                     @click.native="$emit('close')"
+                  />
                </div>
                <div class="relative flex w-full items-center">
                   <input 
