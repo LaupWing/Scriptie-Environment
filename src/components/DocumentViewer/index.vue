@@ -5,12 +5,12 @@
          v-if="loaded"
       >
          <main class="flex-1 flex flex-col">
-            <!-- <app-header
+            <app-header
                :title.sync="handboek_draft.title"
                :versions="handboek_draft.content_versions"
                :current_version.sync="handboek_draft.current_version"
                @close="$emit('close')"
-            /> -->
+            />
             <div class="flex-1 flex relative">
                <!-- <heading-menu
                   v-if="editor_items"
@@ -38,7 +38,7 @@
 
 <script>
 // import Editor from "./Editor"
-// import Header from "./Header"
+import Header from "./Header"
 // import HeadingMenu from "./HeadingMenu"
 import HtmlDiff from "htmldiff-js"
 import { decode } from "html-entities"
@@ -48,7 +48,7 @@ export default {
    name: "DocumentEditor",
    components: {
       // Editor,
-      // "app-header": Header,
+      "app-header": Header,
       // HeadingMenu,
       // CommentSection
    },
@@ -129,7 +129,7 @@ export default {
          console.log(this.handboek_draft)
          this.handboek_live = await this.$store.dispatch('single')
          console.log(this.handboek_live)
-         // this.loaded = true
+         this.loaded = true
       }
    },
    async created() {
