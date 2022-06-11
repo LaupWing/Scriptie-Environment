@@ -1,25 +1,25 @@
 <template>
    <div class="flex w-full flex-1 border-t border-border origin-top-left duration-500 min-h-0 relative flex-col">
-      <!-- <div 
+      <div 
          class="flex-1 flex"
          v-if="loaded"
       >
          <main class="flex-1 flex flex-col">
-            <app-header
+            <!-- <app-header
                :title.sync="handboek_draft.title"
                :versions="handboek_draft.content_versions"
                :current_version.sync="handboek_draft.current_version"
                @close="$emit('close')"
-            />
+            /> -->
             <div class="flex-1 flex relative">
-               <heading-menu
+               <!-- <heading-menu
                   v-if="editor_items"
                   :editor_items="editor_items"
-               />
-               <editor
+               /> -->
+               <!-- <editor
                   :content="content"
                   @set-menu-headings="editor_items = $event"
-               />
+               /> -->
             </div>
          </main>
       </div>
@@ -29,7 +29,7 @@
       >
          <app-loading class="w-20"/>
       </div>
-      <comment-section
+      <!-- <comment-section
          :comparisonDocument="comparisonDocument"
          v-on="$listeners"
       /> -->
@@ -127,10 +127,8 @@ export default {
          this.loaded = false
          this.handboek_draft = await this.$store.dispatch('singleDraft')
          console.log(this.handboek_draft)
-         // this.handboek_live = await this.$store.dispatch('handboeken/single', {
-         //    ...this.$route.query,
-         //    draft: false
-         // })
+         this.handboek_live = await this.$store.dispatch('single')
+         console.log(this.handboek_live)
          // this.loaded = true
       }
    },
