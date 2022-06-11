@@ -28,7 +28,7 @@
          <app-loading class="w-20"/>
       </div>
       <comment-section
-         v-if="loaded"
+         v-if="loaded && template_items"
          :template_items="template_items"
          :templates="templates"
          :handboek_draft="handboek_draft"

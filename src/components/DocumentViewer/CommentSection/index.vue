@@ -17,6 +17,8 @@
             :comments="handboek_draft.comments"
          />
          <comment-form
+            :templates="templates"
+            :template_items="template_items"
             :handboek_draft="handboek_draft"
          />
       </div>
@@ -37,7 +39,15 @@ export default {
       handboek_draft:{
          type: Object,
          required: true
-      }
+      },
+      templates:{
+         type: Array,
+         required: true
+      },
+      template_items:{
+         type: Object,
+         required: true
+      },
    },
    data(){
       return{

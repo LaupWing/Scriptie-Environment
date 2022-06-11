@@ -28,7 +28,15 @@ export default {
       handboek_draft:{
          type: Object,
          required: true
-      }
+      },
+      templates:{
+         type: Array,
+         required: true
+      },
+      template_items:{
+         type: Object,
+         required: true
+      },
    },
    data(){
       return{
@@ -47,6 +55,10 @@ export default {
          // )
          // this.comment = ''
       },
+   },
+   created(){
+      console.log(this.templates.filter(x=>this.template_items.templates.includes(x.id)))
+      console.log(this.template_items)
    }
 }
 </script>
