@@ -3,8 +3,7 @@
       <div
          class="px-4 py-1 border rounded m-2"
          :class="`
-            ${item.id !== $store.state.document.user_id ? 'ml-auto' : 'mr-auto'}
-            ${item.id === $store.state.document.user_id && !item.seen ? 'border-highlight shadow' : 'border-border'}
+            ${$store.state.isModerator ? 'ml-auto' : 'mr-auto'}
          `"
          v-for="(item,i) in comments"
          :key="i"

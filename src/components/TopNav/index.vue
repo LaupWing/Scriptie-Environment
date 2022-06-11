@@ -1,13 +1,36 @@
 <template>
    <nav class="w-full border-b border-border h-16 justify-between flex items-center px-4">
-      <div class="flex">
-         <!-- <p
-            class="ml-2 tracking-wide text-xs uppercase"
-            v-for="(path, i) in paths"
-            :key="i"
-         >
-            {{path}}
-         </p> -->
+      <div 
+         class="flex items-center tracking-wide text-xs uppercase"
+         v-if="$store.state.isModerator"
+      >
+         <p>
+            Users
+         </p>
+         <p class="font-bold mx-2">></p>
+         <p>
+            Marije ten Brink
+         </p>
+         <p class="font-bold mx-2">></p>
+         <p>
+            Documenten
+         </p>
+         <p class="font-bold mx-2">></p>
+         <p>
+            Standaard Handboek Droneconsultancy
+         </p>
+      </div>
+      <div 
+         class="flex items-center tracking-wide text-xs uppercase"
+         v-else
+      >
+         <p>
+            Documents
+         </p>
+         <p class="font-bold mx-2">></p>
+         <p>
+            Standaard Handboek Droneconsultancy
+         </p>
       </div>
       <ul class="relative">
          <div 
