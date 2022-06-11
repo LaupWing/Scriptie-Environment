@@ -1,10 +1,17 @@
 <template>
    <div class="flex">
-      <textarea 
+      <!-- <textarea 
          v-model="comment"
          placeholder="Opmerkingen"
          class="w-full border bg-gray-100 border-border resize-none rounded focus:outline-none focus:ring-2 focus:ring-highlight p-2 h-20"
-      ></textarea>
+      ></textarea> -->
+      <div 
+         class="w-full border bg-gray-100 border-border resize-none rounded focus:outline-none focus:ring-2 focus:ring-highlight p-2 h-20"
+         contenteditable="true"
+         @input="e => comment = e.target.innerText"
+      >
+         
+      </div>
       <app-button 
          class="mt-auto flex-shrink-0 ml-2"
          @click.native="addComment"
@@ -30,14 +37,15 @@ export default {
    },
    methods:{
       addComment(){
-         this.$store.dispatch('handboeken/addComment', 
-            {  
-               draft: this.comparisonDocument,
-               comment: this.comment,
-               connection: this.$route.query
-            }
-         )
-         this.comment = ''
+         console.log(this.comment)
+         // this.$store.dispatch('handboeken/addComment', 
+         //    {  
+         //       draft: this.comparisonDocument,
+         //       comment: this.comment,
+         //       connection: this.$route.query
+         //    }
+         // )
+         // this.comment = ''
       },
    }
 }

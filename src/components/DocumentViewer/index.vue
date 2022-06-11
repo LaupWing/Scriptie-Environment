@@ -30,6 +30,7 @@
          <app-loading class="w-20"/>
       </div>
       <comment-section
+         v-if="loaded"
          :comparisonDocument="handboek_draft"
       />
    </div>
