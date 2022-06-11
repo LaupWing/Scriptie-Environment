@@ -1,12 +1,23 @@
 <template>
    <div class="flex">
       <app-backdrop>
-         <div class="bg-background p-2 m-auto rounded max-w-xl flex flex-col">
-            <header class="flex justify-between">
-               <h2 class="uppercase font-bold text-font">
-                  Gebruikte templates
-               </h2>
-               <icon-close class="w-6"/>
+         <div class="bg-background p-2 m-auto rounded max-w-xl mt-10 w-full flex flex-col">
+            <header class="flex flex-col">
+               <div class="flex justify-between">
+                  <h2 class="uppercase font-bold text-font">
+                     Gebruikte templates
+                  </h2>
+                  <icon-close class="w-6"/>
+               </div>
+               <div class="relative flex w-full items-center">
+                  <input 
+                     type="text" 
+                     class="focus:outline-none p-1 px-2 focus:border-highlight rounded border border-border flex-1"
+                     placeholder="Zoek naar template"
+                     v-model="searching"
+                  >
+                  <icon-search class="absolute right-2 w-5 text-border"/>
+               </div>
             </header>
             <ul 
                class="bg-main overflow-auto flex flex-col border border-border m-2"
@@ -60,12 +71,15 @@ export default {
    },
    data(){
       return{
-         comment: ''
+         comment: '',
+         searching: ''
       }
    },
    computed:{
       used_templates(){
-         return this.templates.filter(x=>this.template_items.templates.includes(x.id))
+         return this.templates
+            .filter(x=>this.template_items.templates.includes(x.id))
+            .filter(x=>x.name.includes(this.searching))
       }
    },
    methods:{
