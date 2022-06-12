@@ -100,7 +100,7 @@ export default new Vuex.Store({
                name: user.name,
                id: user.id,
                moderator: rootState.isModerator,
-               timestamp: new Date(),
+               timestamp: new Date().getSeconds(),
                seen: false
             })
             await handboekenRef(rootState.document.user_id,rootState.document.type_id)
