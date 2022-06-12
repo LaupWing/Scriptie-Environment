@@ -8,7 +8,7 @@ export default {
    menubar: false,
    height: "auto",
    plugins: ["print preview", "help wordcount ruler"],
-   toolbar: "print | preview | help",
+   toolbar: "print",
    content_style: css,
    setup(){
       window.tinymce.PluginManager.add('ruler', ruler)

@@ -1,5 +1,5 @@
 <template>
-   <div class="flex flex-col mb-4 overflow-y-auto">
+   <div class="flex flex-col mb-4 overflow-y-auto scroll-smooth">
       <comment
          v-for="(item,i) in comments"
          :item="item"
@@ -26,6 +26,12 @@ export default {
          type: HTMLIFrameElement,
          required: true
       }
+   },
+   mounted(){
+      setTimeout(()=>{
+         const container = this.$el
+         container.scrollTop = container.scrollHeight
+      },2000)
    }
 }
 </script>
