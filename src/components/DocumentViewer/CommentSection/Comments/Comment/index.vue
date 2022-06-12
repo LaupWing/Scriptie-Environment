@@ -20,7 +20,7 @@
             {{ago(item.timestamp)}} - {{date(item.timestamp)}}
          </span>
       </h2>
-      <div v-html="item.comment"></div>
+      <div class="comment" v-html="item.comment"></div>
    </div>
 </template>
 
@@ -49,7 +49,16 @@ export default {
       },
    },
    mounted(){
-      console.log(this.$el)
+      const link = this.$el.querySelector('.comment span') 
+      if(link){
+         link.addEventListener('click', ()=>{
+            const body = this.iframe
+               .contentWindow
+               .document
+               .body
+            this.iframe.contentWindow.scrollTo(0, body.querySelector(`article[data-id="${link.dataset.id}"]`).offsetTop)
+         })
+      }
    }
 }
 </script>

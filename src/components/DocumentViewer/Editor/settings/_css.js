@@ -5,6 +5,11 @@ export default `
    font-weight: normal;
    src: local('Calibri Light'), url('assets/fonts/calibril.woff') format('woff');
 }
+
+html{
+   scroll-behavior: smooth;
+}
+
 body#tinymce{
    font-family: 'Calibri Light', 'Lato', Arial;
    width: 21cm; /* this should be 21 cm as the page size, but I have little space here in fiddle (15)*/
