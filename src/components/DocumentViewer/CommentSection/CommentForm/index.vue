@@ -7,12 +7,6 @@
          @set-link="setLink"
          @close="showed_used_templates = false"
       />
-      <!-- <div 
-         class="w-full border bg-gray-100 border-border resize-none rounded focus:outline-none focus:ring-2 focus:ring-highlight p-2 h-20"
-         contenteditable="true"
-         @input="setContent"
-      >
-      </div> -->
       <div class="w-full border border-border resize-none rounded overflow-hidden">
          <editor
             :init="settings"
@@ -94,7 +88,7 @@ export default {
       },
       setLink(e){
          const splitted = this.splitted
-         splitted[this.hashtag_place] = `<span class="mceNonEditable" data-id="${e.id}">#${e.shortcode} ${e.name}</span>`
+         splitted[this.hashtag_place] = `<span class="mceNonEditable underline cursor-pointer hover:text-highlight" data-id="${e.id}">#${e.shortcode} ${e.name}</span>`
          this.comment = `<p>${splitted.join('')}</p>`
          this.showed_used_templates = false
          this.hashtag_place = null
