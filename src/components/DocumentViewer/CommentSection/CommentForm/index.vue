@@ -74,7 +74,7 @@ export default {
    methods:{
       checkHashtags(){
          const splitted = this.splitted
-         const hashtags = splitted.map(x=> x === '#' ? '#' : null)
+         const hashtags = splitted.map(x=> x === '@' ? '@' : null)
          if(hashtags.length){
             hashtags.forEach((x,i)=>{
                if(x){
@@ -88,7 +88,7 @@ export default {
       },
       setLink(e){
          const splitted = this.splitted
-         splitted[this.hashtag_place] = `<span class="mceNonEditable underline cursor-pointer hover:text-highlight" data-id="${e.id}">#${e.shortcode} ${e.name}</span>`
+         splitted[this.hashtag_place] = `<span class="mceNonEditable underline cursor-pointer hover:text-highlight" data-id="${e.id}">@${e.shortcode} ${e.name}</span>`
          this.comment = `<p>${splitted.join('')}</p>`
          this.showed_used_templates = false
          this.hashtag_place = null
