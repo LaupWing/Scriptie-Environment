@@ -15,6 +15,7 @@
       >
          <comments
             :comments="handboek_draft.comments"
+            :iframe="template_items.iframe"
          />
          <comment-form
             :templates="templates"

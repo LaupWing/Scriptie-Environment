@@ -4,6 +4,7 @@
          v-for="(item,i) in comments"
          :item="item"
          :key="i"
+         :iframe="iframe"
       />
    </div>
 </template>
@@ -19,6 +20,10 @@ export default {
    props:{
       comments:{
          type: Array,
+         required: true
+      },
+      iframe:{
+         type: HTMLIFrameElement,
          required: true
       }
    }

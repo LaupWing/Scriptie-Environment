@@ -33,6 +33,10 @@ export default {
       item:{
          type: Object,
          required: true
+      },
+      iframe:{
+         type: HTMLIFrameElement,
+         required: true
       }
    },
    methods:{
