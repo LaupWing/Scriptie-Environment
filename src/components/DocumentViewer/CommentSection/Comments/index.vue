@@ -2,10 +2,11 @@
    <div class="flex flex-col mb-4 overflow-y-auto">
       <div
          class="px-4 py-1 border rounded m-2"
-         :class="`
-            ${$store.state.isModerator ? 'ml-auto' : 'mr-auto'}
-         `"
          v-for="(item,i) in comments"
+         :class="`
+            ${($store.state.isModerator && item.moderator) ||
+               (!$store.state.isModerator && !item.moderator) ? 'ml-auto' : 'mr-auto'}
+         `"
          :key="i"
       >
          <h2 class="text-xs uppercase font-bold opacity-50">
