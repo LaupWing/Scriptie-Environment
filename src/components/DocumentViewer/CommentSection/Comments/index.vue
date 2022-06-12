@@ -43,10 +43,10 @@ export default {
    methods:{
       ago(date){
          moment.locale('nl')
-         return moment(date*1000).fromNow()
+         return moment(date).fromNow()
       },
       date(date){
-         return moment(date*1000).format('L')
+         return moment(date).format('L')
       },
    }
 }
