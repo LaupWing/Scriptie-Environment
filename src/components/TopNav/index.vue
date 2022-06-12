@@ -25,7 +25,7 @@
          v-else
       >
          <p>
-            Documents
+            Updates
          </p>
          <p class="font-bold mx-2">></p>
          <p>
