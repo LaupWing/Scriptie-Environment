@@ -91,8 +91,24 @@ export default new Vuex.Store({
             throw new Error(e.message)
          }
       },
-      async addComment(){
-         
+      async addComment({rootState}, {draft, comment}){
+         try{
+            const user = rootState.isModerator ? rootState.moderator : rootState.customer 
+            const {comments} = draft
+            comments.push({
+               comment,
+               name: user.name,
+               id: user.id,
+               moderator: rootState.isModerator,
+               timestamp: new Date(),
+               seen: false
+            })
+            await handboekenRef(rootState.document.user_id,rootState.document.type_id)
+               .doc(rootState.document.handboek_id)
+               .update({comments})
+         }catch(e){
+            throw new Error(e.message)
+         }
       }
    }
 })

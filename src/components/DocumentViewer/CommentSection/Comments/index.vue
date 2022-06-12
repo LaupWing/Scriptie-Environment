@@ -22,7 +22,7 @@
                {{ago(item.timestamp)}} - {{date(item.timestamp)}}
             </span>
          </h2>
-         <p>{{item.comment}}</p>
+         <p v-html="item.comment"></p>
       </div>
    </div>
 </template>
