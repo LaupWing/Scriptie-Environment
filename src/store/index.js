@@ -90,6 +90,9 @@ export default new Vuex.Store({
          } catch (e) {
             throw new Error(e.message)
          }
+      },
+      async addComment(){
+         
       }
    }
 })

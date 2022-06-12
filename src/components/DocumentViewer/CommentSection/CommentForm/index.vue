@@ -100,15 +100,13 @@ export default {
          this.hashtag_place = null
       },
       addComment(){
-         console.log(this.comment)
-         // this.$store.dispatch('handboeken/addComment', 
-         //    {  
-         //       draft: this.comparisonDocument,
-         //       comment: this.comment,
-         //       connection: this.$route.query
-         //    }
-         // )
-         // this.comment = ''
+         this.$store.dispatch('addComment', 
+            {  
+               draft: this.handboek_draft,
+               comment: this.comment
+            }
+         )
+         this.comment = ''
       },
    }
 }
