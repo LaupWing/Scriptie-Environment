@@ -49,14 +49,16 @@ export default {
       },
    },
    mounted(){
-      const link = this.$el.querySelector('.comment span') 
-      if(link){
-         link.addEventListener('click', ()=>{
-            const body = this.iframe
-               .contentWindow
-               .document
-               .body
-            this.iframe.contentWindow.scrollTo(0, body.querySelector(`article[data-id="${link.dataset.id}"]`).offsetTop)
+      const links = this.$el.querySelectorAll('.comment span') 
+      if(links.length > 0 ){
+         links.forEach(link=>{
+            link.addEventListener('click', ()=>{
+               const body = this.iframe
+                  .contentWindow
+                  .document
+                  .body
+               this.iframe.contentWindow.scrollTo(0, body.querySelector(`article[data-id="${link.dataset.id}"]`).offsetTop)
+            })
          })
       }
    }
