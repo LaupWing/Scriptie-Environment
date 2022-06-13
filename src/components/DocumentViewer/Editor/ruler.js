@@ -46,6 +46,7 @@ export default function (editor) {
       let pages = Math.ceil(imgH / a4px);
 
       let i, j, curY = startMargin;
+      console.log(j)
       for (i = 0; i < pages; i++) {
          let blockH = a4px
 
