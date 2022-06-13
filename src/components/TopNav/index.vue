@@ -47,7 +47,7 @@
             class="absolute bottom-0 right-0 w-52 transform translate-y-full bg-main text-left overflow-hidden shadow rounded z-50 text-font"
             v-if="show_menu"
          >
-            <li class="py-3 px-2 border-b border-border">Fons van Kesteren</li>
+            <li class="py-3 px-2 border-b border-border">{{$store.state.isModerator? $store.state.moderator.name : $store.state.customer.name}}</li>
             <li 
                class="cursor-pointer uppercase text-xs border-b border-border py-1 px-2 hover:bg-highlight hover:text-main"
             >
@@ -70,11 +70,6 @@
 </template>
 <script>
 export default {
-   computed:{
-      // paths(){
-      //    return this.$route.path.split('/')
-      // }
-   },
    data(){
       return{
          show_menu: false
