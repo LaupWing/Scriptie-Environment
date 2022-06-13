@@ -65,7 +65,7 @@ export default {
       used_templates(){
          return this.templates
             .filter(x=>this.template_items.templates.includes(x.id))
-            .filter(x=>x.name.includes(this.searching))
+            .filter(x=>x.name.toLowerCase().includes(this.searching.toLowerCase()))
       }
    }
 }
